@@ -1,14 +1,17 @@
 import random as r
 
 class Game():
-    print("Welcome to the number guessing game!")
-    print('*' * 35)
-    print()
+    
     def __init__(self):
         self.min_limit = 0
         self.max_limit = 0
         self.generated_number = 0
         self.number_of_turns = 0
+
+    def welcome_message(self):
+        print("Welcome to the number guessing game!")
+        print('*' * 35)
+        print()
 
     def choose_difficulty(self):
         made_choice = ''
@@ -97,6 +100,7 @@ class Game():
         return
 
     def start(self):
+        self.welcome_message()
         self.choose_difficulty()
         self.choose_range()
         self.generate_number()
