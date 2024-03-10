@@ -74,7 +74,6 @@ class Hangman():
             print(f"Number of Chances Left: {self.chances_left}")
             print(self.print_list(self.blank_list))
             print()
-            # self.print_list(self.blank_list)
             self.user_input = input("Enter a letter : ").lower()
             if self.is_valid_input(self.user_input):
                 self.check_letter(self.user_input)
