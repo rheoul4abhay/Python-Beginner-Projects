@@ -125,34 +125,41 @@ class Bank:
             print('*'*30)
 
     def register(self):
-        print('')
-        print('Let\'s get you registered with us ...')
-        print('')
-        try:
-            input_name = input('Enter your name : ').lower()
-            if input_name[0] in ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']:
-                print('')
-                print('*'*30)
-                print(f'Welcome {input_name.upper()}')
-                user_password = self.generate_password()
-                print('')
-                print(f'Your generated password is : {user_password}')
-                print('')
-                data.append({'username':input_name,'password':user_password,'available_balance':0})
-                self.new_user_entry = {'username':input_name,'password':user_password,'available_balance':0}
-                self.have_registered = True
-                print('You\'re now registered successfully')
-                print(f'Thanks for choosing our bank services.')
-                print('')
-                print('*' * 30)
-                print('')
-                self.welcome()
-                self.get_input()
-            else:
-                raise ValueError
-        except ValueError:
-            print('You must enter a valid username that begin with an alphabet!')
-            self.register()
+        if not self.have_registered:
+            print('')
+            print('Let\'s get you registered with us ...')
+            print('')
+            try:
+                input_name = input('Enter your name : ').lower()
+                if input_name[0] in ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']:
+                    print('')
+                    print('*'*30)
+                    print(f'Welcome {input_name.upper()}')
+                    user_password = self.generate_password()
+                    print('')
+                    print(f'Your generated password is : {user_password}')
+                    print('')
+                    data.append({'username':input_name,'password':user_password,'available_balance':0})
+                    self.new_user_entry = {'username':input_name,'password':user_password,'available_balance':0}
+                    self.have_registered = True
+                    print('You\'re now registered successfully')
+                    print(f'Thanks for choosing our bank services.')
+                    print('')
+                    print('*' * 30)
+                    print('')
+                    self.welcome()
+                    self.get_input()
+                else:
+                    raise ValueError
+            except ValueError:
+                print('You must enter a valid username that begin with an alphabet!')
+                self.register()
+        else:
+            print('')
+            print('Account already registered with this username')
+            print('')
+            self.welcome()
+            self.get_input()
 
     def generate_password(self):
         pwd = ''
